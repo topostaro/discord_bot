@@ -26,7 +26,7 @@ class Game:
         self.channel = channel
         self.demon = players[0]
         self.players = players
-        self.demonic = []
+        self.demonics = []
         self.true_name = ""
         self.player_num = len(players)
         if self.player_num <= 6:
@@ -63,9 +63,9 @@ class Game:
         self.true_name: str = (await bot.wait_for('message', check=check)).content
 
         # 悪魔憑き指名
-        self.demonic = self.players[0:self.demonic_num]
+        self.demonics = self.players[0:self.demonic_num]
 
-        for demonic in self.demonic:
+        for demonic in self.demonics:
             await self.demon.send(f"{demonic.display_name}は悪魔憑きです")
             await demonic.send("あなたは悪魔憑きです")
             await demonic.send(f"悪魔の真名は「{self.true_name}」です")
